@@ -1,0 +1,79 @@
+/* --- ESTILOS GERAIS E DO PAINEL --- */
+:root { --primary: #3498db; --secondary: #2c3e50; --success: #2ecc71; --danger: #e74c3c; --warning: #f39c12; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); color: #34495e; line-height: 1.6; padding: 20px; }
+.container { max-width: 1200px; margin: 0 auto; }
+h1, h2, h3 { color: var(--secondary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #ddd; }
+h1 { text-align: center; border-bottom: none; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+.card, .sub-card { background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); padding: 20px; }
+.sub-card { margin-top: 20px; }
+.form-group { margin-bottom: 15px; }
+label { display: block; margin-bottom: 5px; font-weight: 600; }
+input, textarea, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: monospace; }
+textarea { height: 120px; }
+button, .button { background: var(--primary); color: white !important; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background 0.3s; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+button:hover:not(:disabled), .button:hover { opacity: 0.8; }
+button:disabled { background: #aaa; cursor: not-allowed; }
+.btn-success { background: var(--success); } .btn-danger { background: var(--danger); } .btn-warning { background: var(--warning); } .btn-secondary { background: var(--secondary); }
+.repo-list, #user-list, #ssh-key-list { list-style: none; padding:0; }
+.repo-item, .user-item { padding: 15px; border-bottom: 1px solid #eee; }
+.repo-item:last-child, .user-item:last-child { border-bottom: none; }
+.item-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+.clone-command-wrapper { display: flex; gap: 5px; margin-top: 10px; }
+.clone-command-wrapper input { flex-grow: 1; }
+.clone-command-wrapper button { padding: 10px 15px; font-size: 14px; }
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
+.modal-content { background-color: #fefefe; margin: 5% auto; padding: 20px 40px; border: 1px solid #888; width: 80%; max-width: 800px; border-radius: 8px; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 20px; }
+.close { color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; }
+#repo-files { background: #fafafa; border: 1px solid #eee; padding: 15px; border-radius: 4px; max-height: 400px; overflow-y: auto; white-space: pre; font-size: 14px; color: #333; }
+#repo-files.error { color: var(--danger); font-weight: bold; }
+.alert-container { position: fixed; top: 20px; right: 20px; z-index: 2000; width: 350px; }
+.alert { padding: 15px; border-radius: 4px; margin-bottom: 10px; color: white; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: opacity 0.5s; }
+#help-btn { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; font-size: 24px; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1001; }
+.help-content code { background-color: #e0e6ed; padding: 0.2em 0.4em; border-radius: 4px; font-family: "SFMono-Regular", Consolas, Menlo, monospace; font-size: 0.95em; }
+.help-content pre { background-color: #2d3748; color: #e2e8f0; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 15px 0; }
+.help-content pre code { color: #2c3e50; }
+.help-content li { margin-bottom: 10px; }
+#permissions-grid { overflow-x: auto; }
+#permissions-table { border-collapse: collapse; width: 100%; }
+#permissions-table th, #permissions-table td { padding: 8px; border: 1px solid #ddd; text-align: left; }
+#permissions-table th { background-color: #f2f2f2; }
+#permissions-table td:first-child { font-weight: bold; }
+#permissions-table input[type=checkbox] { display: block; margin: auto; }
+
+/* --- ESTILOS DO LOGIN E FIRST RUN --- */
+.login-container { background-color: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 400px; margin: 10vh auto; }
+.login-container h1 { text-align: center; color: #2c3e50; margin-bottom: 20px; }
+.login-container .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 10px; border-radius: 4px; text-align: center; margin-bottom: 15px; }
+
+/* --- SELETOR DE PROTOCOLO (SSH/HTTP) --- */
+.protocol-selector {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+.protocol-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none;
+}
+
+.protocol-label input[type="radio"] {
+    width: auto; /* Reseta o width: 100% global dos inputs */
+    margin: 0;
+    cursor: pointer;
+}
+
+.clone-command-wrapper input {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    font-weight: 500;
+}
